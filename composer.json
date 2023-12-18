@@ -1,0 +1,26 @@
+{
+    "name": "pribolshoy/yii2-repository",
+    "description": "Public library",
+    "keywords": ["repository"],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Nikolay Pribolshoy",
+            "email": "pribolshoy@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.4",
+        "pribolshoy/repository": "*",
+        "yiisoft/arrays": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "pribolshoy\\yii2repository\\": "src"
+        }
+    }
+}
