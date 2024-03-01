@@ -16,24 +16,18 @@ trait ARServiceTrait
 {
     public function getItemPrimaryKey($item)
     {
-        return $item->getPrimaryKey();
-    }
+        if ($result = parent::getItemPrimaryKey($item)) {
+            return $result;
+        }
 
-    public function hasItemAttribute($item, string $name) :bool
-    {
-        return $item->hasAttribute($name);
-    }
-
-    public function getItemAttribute($item, string $name)
-    {
-        if ($this->hasItemAttribute($item, $name)) {
-            return $item->getAttribute($name);
+        if (is_object($item)) {
+            return $item->getPrimaryKey();
         }
 
         return null;
     }
 
-    public function sort(array $items)
+    public function sort(array $items): array
     {
         if ($this->sorting) {
             foreach ($this->sorting as $key => $direction) {

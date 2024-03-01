@@ -78,10 +78,10 @@ abstract class AbstractSphinxQueryRepository extends AbstractCachebleRepository
         $this->getTotal();
         $this->addLimitAndOffset();
         $this->items = $this->model->select('*')
-                ->addOptions($this->query)
-                ->from($this->catalog)
-                ->showMeta($this->show_meta)
-                ->all() ?? [];
+            ->addOptions($this->query)
+            ->from($this->catalog)
+            ->showMeta($this->show_meta)
+            ->all() ?? [];
 
         return $this;
     }
