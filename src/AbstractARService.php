@@ -3,6 +3,7 @@
 namespace pribolshoy\yii2repository;
 
 use pribolshoy\repository\AbstractCachebleService;
+use yii\helpers\ArrayHelper;
 
 /**
  * Class AbstractARService

@@ -6,10 +6,9 @@ use yii\helpers\ArrayHelper;
 
 /**
  * Class ARServiceTrait
- *
  * This trait is for implementation of abstract methods
- * from AbstractService.
- * For using by Yii2 ActiveRecords objects.
+ * from AbstractCachebleService.
+ * For using by Yii2 ACtiveRecords objects
  *
  * @package pribolshoy\yii2repository
  */
@@ -34,7 +33,7 @@ trait ARServiceTrait
         return null;
     }
 
-    protected function sort(array $items)
+    public function sort(array $items)
     {
         if ($this->sorting) {
             foreach ($this->sorting as $key => $direction) {

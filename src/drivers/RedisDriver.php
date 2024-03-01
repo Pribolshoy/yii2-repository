@@ -23,11 +23,6 @@ class RedisDriver extends BaseCacheDriver
 {
     protected string $component = 'redis';
 
-    /**
-     * @param string $key
-     * @param array $params
-     * @return array|mixed
-     */
     public function get(string $key, array $params = [])
     {
         // default strategy
@@ -41,7 +36,7 @@ class RedisDriver extends BaseCacheDriver
         }
 
         if (!method_exists($this, $strategy)) {
-            throw new \RuntimeException("Method $strategy not exists in " . __CLASS__);
+            throw new \RuntimeException("Метод $strategy не существует в " . __CLASS__);
         }
         return $this->{$strategy}($key, $params) ?? [];
     }
@@ -53,7 +48,6 @@ class RedisDriver extends BaseCacheDriver
      * @param array $params
      *
      * @return array
-     * @throws \Exception
      */
     protected function getAllHash(string $key, array $params = [])
     {
@@ -73,7 +67,6 @@ class RedisDriver extends BaseCacheDriver
      * @param array $params
      *
      * @return array|mixed
-     * @throws \Exception
      */
     protected function getValue(string $key, array $params = [])
     {
@@ -88,7 +81,6 @@ class RedisDriver extends BaseCacheDriver
      * @param array $params
      *
      * @return array|mixed
-     * @throws \Exception
      */
     protected function getHValue(string $key, array $params = [])
     {
@@ -107,7 +99,6 @@ class RedisDriver extends BaseCacheDriver
      * @param array $params
      *
      * @return array
-     * @throws \Exception
      */
     protected function getHValues(string $key, array $params = [])
     {
@@ -133,11 +124,11 @@ class RedisDriver extends BaseCacheDriver
      */
     public function set(string $key, $value, int $cache_duration = 0, array $params = []) :object
     {
-        // default is hash table
+        // по умолчанию хеш таблица
         $strategy = $params['strategy'] ?? 'hset';
 
         if (!method_exists($this, $strategy)) {
-            throw new \RuntimeException("Method $strategy not exists in " . __CLASS__);
+            throw new \RuntimeException("Метод $strategy не существует в " . __CLASS__);
         }
 
         return $this->{$strategy}($key, $value, $cache_duration, $params);
@@ -173,7 +164,7 @@ class RedisDriver extends BaseCacheDriver
         $strategy = $params['strategy'] ?? 'hdel';
 
         if (!method_exists($this, $strategy)) {
-            throw new \RuntimeException("Method $strategy not exists in " . __CLASS__);
+            throw new \RuntimeException("Метод $strategy не существует в " . __CLASS__);
         }
 
         return $this->{$strategy}($key, $params);
